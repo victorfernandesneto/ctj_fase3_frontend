@@ -1,4 +1,9 @@
-import { useState} from 'react'
+import react from 'react'
+import React, { useState } from 'react';
+import { getFunction } from './services/APIService';
+
+function (App) {
+
 function MovieCatalog() {
   const [movies, setMovies] = React.useState([
     { title: 'The Shawshank Redemption', year: 1994, watched: false },
@@ -81,5 +86,8 @@ function MovieCatalog() {
     </div>
   );
 }
+}
+
+export default App; 
 
 ReactDOM.render(<MovieCatalog />, document.getElementById('root'));

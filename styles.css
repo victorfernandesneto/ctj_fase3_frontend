@@ -31,7 +31,7 @@ body {
     background-color: #333;
     border: none;
     border-radius: 10px;
-    color: #da0404;
+    color: #e70303;
     font-size: 18px;
 }
 
@@ -78,7 +78,7 @@ body {
 .button.add {
   padding: 5px 12px;
   margin-left: 15px;
-  background-color: #fd0a0acd;
+  background-color: #f40612;
   color: #030303;
   border: none;
   border-radius: 25px;
@@ -89,6 +89,7 @@ body {
 .button.add:hover {
   background-color: #f40612;
 }
+
 
   
   @media (max-width: 768px) {
@@ -109,7 +110,7 @@ body {
   
     .button {
       padding: 12px 24px;
-      font-size: 16px;
+      font-size: 15px;
     }
   }
   
