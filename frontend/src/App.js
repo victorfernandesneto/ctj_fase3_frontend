@@ -1,19 +1,15 @@
-import react from 'react'
 import React, { useState } from 'react';
-import { getFunction } from './services/APIService';
-
-function (App) {
 
 function MovieCatalog() {
-  const [movies, setMovies] = React.useState([
+  const [movies, setMovies] = useState([
     { title: 'The Shawshank Redemption', year: 1994, watched: false },
     { title: 'The Godfather', year: 1972, watched: false },
     { title: 'The Dark Knight', year: 2008, watched: false },
     // Add more movies here
   ]);
 
-  const [searchTerm, setSearchTerm] = React.useState('');
-  const [suggestedMovie, setSuggestedMovie] = React.useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [suggestedMovie, setSuggestedMovie] = useState('');
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -58,27 +54,25 @@ function MovieCatalog() {
               className={`button ${movie.watched ? "watched" : ""}`}>
               {movie.watched ? 'Já assisti' : 'Filme já visto!'}
             </button>
-
           </div>
         ))
       ) : (
         <div>
-          <p>Esse filme não está cadastrado!</p>
+          <p>Esse filme não está cadastrado</p>
           {suggestedMovie && !isSuggestionAlreadyAdded && (
             <div>
-              <p>Esse filme não está cadastrado!"{suggestedMovie}" ao catálogo?</p>
-              <button onClick={handleAddSuggestion}>Add</button>
+              <p>Esse filme não está cadastrado! Deseja adicionar "{suggestedMovie}" ao catálogo?</p>
+              <button onClick={handleAddSuggestion}>Adicionar</button>
             </div>
           )}
           {!suggestedMovie && (
             <div>
               <p>Gostaria de adicionar ao catálogo?</p>
               <input
-                
                 value={searchTerm}
-                onChange={(e) => setSuggestedMovie(e.target.value)}/>
+                onChange={(e) => setSuggestedMovie(e.target.value)}
+              />
               <button onClick={handleAddSuggestion} className={`button add`}>Adicionar ao catálogo</button>
-
             </div>
           )}
         </div>
@@ -86,8 +80,5 @@ function MovieCatalog() {
     </div>
   );
 }
-}
 
-export default App; 
-
-ReactDOM.render(<MovieCatalog />, document.getElementById('root'));
+export default MovieCatalog;
