@@ -1,15 +1,19 @@
 <div *ngIf="movies.length > 0">
     <h2>Movies</h2>
     <div *ngFor="let movie of movies">
-        <div class="movie">
-            <h2>{{ movie.titulo }}</h2>
-            <p>Diretor: {{ movie.diretor }}</p>
-            <p>{{ movie.descricao }}</p>
-            <p>Lançamento: {{ movie.lancamento }}</p>
-        </div>
+      <div class="movie">
+        <h2>{{ movie.titulo }}</h2>
+        <p>Diretor: {{ movie.diretor }}</p>
+        <p>{{ movie.descricao }}</p>
+        <p>Lançamento: {{ movie.lancamento }}</p>
+  
+        <button (click)="toggleWatched(movie)">
+          <i *ngIf="!movie.watched" class="material-icons">remove_from_queue</i> <i *ngIf="movie.watched" class="material-icons">check</i>  </button>
+      </div>
     </div>
-</div>
-
-<div *ngIf="movies.length === 0">
+  </div>
+  
+  <div *ngIf="movies.length === 0">
     <h2>Loading movies...</h2>
-</div>
+  </div>
+  
