@@ -1,0 +1,29 @@
+<app-login-layout
+    title="Login"
+    primaryBtnText="Fazer login"
+    secondaryBtnText="Registre-se"
+    imageUrl="/assets/login.png"
+    (submit)="submit()"
+    (navigate)="navigate()"
+    [disablePrimaryBtn]="!loginForm.valid"
+>
+    <form [formGroup]="loginForm">
+        <app-primary-input
+            formControlName="email"
+            inputName="email"
+            type="email"
+            label="Email"
+            placeholder="victor@fiap.com"
+        >
+            <img src="/assets/email-icon.svg"/>
+        </app-primary-input>
+        <app-primary-input
+            formControlName="password"
+            inputName="password"
+            type="password"
+            label="Senha"
+        >
+        <img src="/assets/password-icon.svg"/>
+    </app-primary-input>
+    </form>
+</app-login-layout>

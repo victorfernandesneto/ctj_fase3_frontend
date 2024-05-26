@@ -1,0 +1,22 @@
+<main>
+    <section class="form-section">
+        <h2>{{ title }}</h2>
+        <ng-content></ng-content>
+        <button 
+        class="btn-primary" 
+        (click)="submit()"
+        [disabled]="disablePrimaryBtn"
+    >
+        {{ primaryBtnText }}
+    </button>
+        <div>
+            <div class="decorator-line"></div>
+            <span>ou</span>
+            <div class="decorator-line"></div>
+        </div>
+        <button class="btn-secondary" (click)="navigate()">{{ secondaryBtnText }}</button>
+    </section>
+    <section class="decoration-section">
+        <img [src]="imageUrl" />
+    </section>
+</main>
