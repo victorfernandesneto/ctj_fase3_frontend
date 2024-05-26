@@ -13,7 +13,6 @@ export class LoginService {
   login(email: string, password: string){
     return this.httpClient.post<LoginResponse>("http://localhost:3000/auth/login/", { email, password }).pipe(
       tap((value) => {
-        console.log(value)
         sessionStorage.setItem("access_token", value.data.session.access_token)
         sessionStorage.setItem("refresh_token", value.data.session.refresh_token)
         sessionStorage.setItem("user_id", value.data.session.user.id)
