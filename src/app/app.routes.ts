@@ -2,8 +2,8 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { MoviesComponent } from './pages/movies/movies.component';
-import { AuthGuard } from './services/auth-guard.service';
-import { IsLoggedInGuardService } from './services/is-logged-in-guard.service';
+import { AuthGuard } from './services/auth/auth-guard.service';
+import { IsLoggedInGuardService } from './services/auth/is-logged-in-guard.service';
 
 export const routes: Routes = [{
     path: "login", component: LoginComponent, canActivate: [IsLoggedInGuardService]
@@ -12,6 +12,6 @@ export const routes: Routes = [{
     path: "register", component: RegisterComponent, canActivate: [IsLoggedInGuardService]
 },
 {
-    path: "movies", component: MoviesComponent, canActivate: [AuthGuard]
+    path: "", component: MoviesComponent, canActivate: [AuthGuard]
 },
 ];

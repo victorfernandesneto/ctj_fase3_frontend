@@ -17,7 +17,7 @@ export class IsLoggedInGuardService implements CanActivate {
     if (!accessToken) {
       return true;
     } else {
-      this.router.navigate(['movies']);
+      this.router.navigate(['']);
       return false;
     }
   }

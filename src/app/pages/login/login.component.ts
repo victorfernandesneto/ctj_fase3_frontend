@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/login.service';
+import { LoginService } from '../../services/auth/login.service';
 import { ToastrService } from 'ngx-toastr';
 import { LoginLayoutComponent } from '../../components/login-layout/login-layout.component';
 
@@ -42,7 +42,7 @@ export class LoginComponent {
   submit(){
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
       next: () => {this.toastService.success("Login feito com sucesso!")
-      this.router.navigate(["movies"])
+      this.router.navigate([""])
       },
       error: () => this.toastService.error("Opa! Deu algo de errado. Tente novamente mais tarde.")
     })
