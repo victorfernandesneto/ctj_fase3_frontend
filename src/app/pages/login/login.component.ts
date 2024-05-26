@@ -42,7 +42,7 @@ export class LoginComponent {
   submit(){
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
       next: () => this.toastService.success("Login feito com sucesso!"),
-      error: () => this.toastService.error("Erro inesperado! Tente novamente mais tarde")
+      error: () => this.toastService.error("Opa! Deu algo de errado. Tente novamente mais tarde.")
     })
   }
 
