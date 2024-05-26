@@ -14,20 +14,15 @@ html, body {
     height: 100%;
 }
 
-.toast-success{
+.toast-success, .toast-error {
+    border-radius: 10px !important;
+    font: $font-alert !important;
+  }
+
+.toast-success {
     background-color: $secondary-color !important;
-    border-radius: 10px !important;
-  }
-
-.toast-success::after{
-    font: $font-alert !important;
 }
 
-.toast-error{
+.toast-error {
     background-color: $dark-color !important;
-    border-radius: 10px !important;
   }
-
-.toast-error::after{
-    font: $font-alert !important;
-}

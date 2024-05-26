@@ -18,6 +18,7 @@ main {
     .form-section {
         padding: 0 40px;
         width: 480px;
+        flex-grow: 0.3;
 
         h2 {
             font: $font-title;

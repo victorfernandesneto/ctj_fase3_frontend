@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
 import { Router } from '@angular/router';
-import { RegisterService } from '../../services/register.service';
+import { LoginService } from '../../services/login.service';
 import { ToastrService } from 'ngx-toastr';
 import { LoginLayoutComponent } from '../../components/login-layout/login-layout.component';
 
@@ -21,7 +21,7 @@ interface RegisterForm {
     PrimaryInputComponent
   ],
   providers: [
-    RegisterService
+    LoginService
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
@@ -31,7 +31,7 @@ export class RegisterComponent {
 
   constructor(
     private router: Router,
-    private registerService: RegisterService,
+    private loginService: LoginService,
     private toastService: ToastrService
   ){
     this.registerForm = new FormGroup({
@@ -42,8 +42,8 @@ export class RegisterComponent {
   }
 
   submit(){
-    this.registerService.login(this.registerForm.value.email, this.registerForm.value.password).subscribe({
-      next: () => this.toastService.success("Login feito com sucesso!"),
+    this.loginService.register(this.registerForm.value.email, this.registerForm.value.password).subscribe({
+      next: () => this.toastService.success("Cadastro feito com sucesso!"),
       error: () => this.toastService.error("Erro inesperado! Tente novamente mais tarde")
     })
   }
