@@ -1,0 +1,85 @@
+@import '../../../styles/variables.scss';
+
+body {
+    background-color: $dark-background;
+}
+
+.container {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 360px;
+    padding: 40px 20px;
+    background-color: white;
+
+    .barrinha {
+        display: flex;
+        gap: 10px;
+        height: 50px;    
+
+        button {
+            background-color: $gray-color;
+            width: 100px;
+            height: 50px;
+            background-image: url('../../../assets/logout.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            border: none;
+            border-radius: 8px;
+        }
+    }
+
+    .movies{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .movie {
+            border-radius: 8px;
+            display: flex;
+            padding: 15px 10px;
+            gap: 5px;
+            background-color: $dark-background;
+        
+            .titulo {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            h2 {
+                font: $font-title;
+                font-size: 24px;
+            }
+            p{
+                font: $font-text;
+                color: $dark-gray-color;
+            }
+        }
+        .descricao {
+            font: $font-alert;
+            max-width: 300px;
+            font-size: 14px;
+        }
+        button{
+            align-self: center;
+            justify-self: center;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+
+            &.not-watched{
+                background-image: url('../../../assets/x.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            &.watched{
+                background-image: url('../../../assets/check.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
+        }}
+}

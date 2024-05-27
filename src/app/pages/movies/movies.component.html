@@ -1,30 +1,30 @@
-<app-variant-input 
-placeholder="O que você quer assistir?"
-(submit)="fetchMoviesFilter()"
-inputName="Pesquisa"
-></app-variant-input>
-<button (click)="logout()">deslogar</button>
+<body>
+<div class="container">
+  <div class="barrinha"><app-variant-input placeholder="O que você quer assistir?" (submit)="fetchMoviesFilter()"
+    inputName="Pesquisa" class="input-pesquisa"></app-variant-input>
+  <button (click)="logout()"></button>
+</div>
 
-<div *ngIf="movies.length > 0">
-    <h2>Movies</h2>
-    <div *ngFor="let movie of movies">
-      <div class="movie">
-        <h2>{{ movie.titulo }} ({{ movie.lancamento }})</h2>
-        <p>{{ movie.diretor }}</p>
-        <p>{{ movie.descricao }}</p>
-  
-        <button *ngIf="movies.length != 0" (click)="toggleWatched(movie)">
-          <i *ngIf="!movie.watched" class="material-icons">remove_from_queue</i> <i *ngIf="movie.watched" class="material-icons">check</i>  </button>
+<div class="movies "*ngIf="movies.length > 0">
+  <div *ngFor="let movie of movies">
+    <div class="movie">
+      <div class="titulo">
+      <h2>{{ movie.titulo }}</h2>
+      <p>{{ movie.diretor }}</p>
       </div>
+      <p class="descricao">{{ movie.descricao }}</p>
+
+      <button *ngIf="!movie.watched" class="not-watched" (click)="toggleWatched(movie)"></button>
+      <button *ngIf="movie.watched" class="watched" (click)="toggleWatched(movie)"></button>
     </div>
   </div>
-  
-  <div *ngIf="movies.length === 0">
-    <h2>Loading movies...</h2>
-  </div>
+</div>
 
-  <app-variant-input 
-placeholder="Não encontrou o que queria? Sugira para o nosso catálogo!"
-(submit)="suggestMovie()"
-inputName="Sugestao"
-></app-variant-input>
+<div *ngIf="movies.length === 0">
+  <h2>Loading movies...</h2>
+</div>
+
+<app-variant-input placeholder="Não encontrou o que queria? Sugira para o nosso catálogo!" (submit)="suggestMovie()"
+  inputName="Sugestao"></app-variant-input>
+</div>
+</body>
