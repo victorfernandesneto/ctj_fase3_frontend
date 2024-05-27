@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { VariantInputComponent } from '../../components/variant-input/variant-input.component';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 interface Movie {
   id: number;
@@ -94,4 +95,10 @@ export class MoviesComponent implements OnInit {
       },
       error: () => this.toastService.error("Opa! Deu algo de errado. Tente novamente mais tarde.")
     })
-  }}
+
+  
+  }
+  logout() {
+    sessionStorage.clear();
+    location.reload();
+    }}

@@ -3,6 +3,7 @@ placeholder="O que você quer assistir?"
 (submit)="fetchMoviesFilter()"
 inputName="Pesquisa"
 ></app-variant-input>
+<button (click)="logout()">deslogar</button>
 
 <div *ngIf="movies.length > 0">
     <h2>Movies</h2>
@@ -12,7 +13,7 @@ inputName="Pesquisa"
         <p>{{ movie.diretor }}</p>
         <p>{{ movie.descricao }}</p>
   
-        <button (click)="toggleWatched(movie)">
+        <button *ngIf="movies.length != 0" (click)="toggleWatched(movie)">
           <i *ngIf="!movie.watched" class="material-icons">remove_from_queue</i> <i *ngIf="movie.watched" class="material-icons">check</i>  </button>
       </div>
     </div>
