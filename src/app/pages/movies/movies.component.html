@@ -1,11 +1,15 @@
+<app-variant-input 
+placeholder="O que você quer assistir?"
+(submit)="fetchMoviesFilter"
+></app-variant-input>
+
 <div *ngIf="movies.length > 0">
     <h2>Movies</h2>
     <div *ngFor="let movie of movies">
       <div class="movie">
-        <h2>{{ movie.titulo }}</h2>
-        <p>Diretor: {{ movie.diretor }}</p>
+        <h2>{{ movie.titulo }} ({{ movie.lancamento }})</h2>
+        <p>{{ movie.diretor }}</p>
         <p>{{ movie.descricao }}</p>
-        <p>Lançamento: {{ movie.lancamento }}</p>
   
         <button (click)="toggleWatched(movie)">
           <i *ngIf="!movie.watched" class="material-icons">remove_from_queue</i> <i *ngIf="movie.watched" class="material-icons">check</i>  </button>

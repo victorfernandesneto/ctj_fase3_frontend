@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { VariantInputComponent } from '../../components/variant-input/variant-input.component';
 
 interface Movie {
   id: number;
@@ -18,7 +19,7 @@ interface WatchedMovie {
 @Component({
   selector: 'app-movies',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, VariantInputComponent],
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss']
 })
@@ -26,6 +27,7 @@ export class MoviesComponent implements OnInit {
   movies: Movie[] = [];
   watchedMovies: Movie[] = [];
   user_id: string | null = sessionStorage.getItem('user_id');
+  apiUrl = 'http://localhost:3000/movies'
 
   constructor(private http: HttpClient) { }
 
@@ -35,14 +37,14 @@ export class MoviesComponent implements OnInit {
   }
 
   fetchMovies() {
-    this.http.get<Movie[]>('http://localhost:3000/movies')
+    this.http.get<Movie[]>(this.apiUrl)
       .subscribe(data => {
         this.movies = data;
       });
   }
 
   fetchWatchedStatus() {
-    this.http.get<WatchedMovie[]>('http://localhost:3000/movies/watched?user_uuid=' + this.user_id!)
+    this.http.get<WatchedMovie[]>(this.apiUrl + '/watched?user_uuid=' + this.user_id!)
       .subscribe(data =>
         {
         const watchedMovieIds = new Set(data.map((movie: WatchedMovie) => movie.filme_id));
@@ -50,8 +52,16 @@ export class MoviesComponent implements OnInit {
         this.movies.forEach((movie: Movie) => {
           movie.watched = watchedMovieIds.has(movie.id);
         });
-        this.movies.forEach(m => console.log(m.titulo, m.watched));
       });
+  }
+
+  fetchMoviesFilter(m: string) {
+    console.log(m);
+    this.http.get<Movie[]>(this.apiUrl + '/title?title=' + m)
+      .subscribe(data => {
+        this.movies = data;
+      });
+    this.fetchWatchedStatus();
   }
 
   toggleWatched(movie: Movie) {
