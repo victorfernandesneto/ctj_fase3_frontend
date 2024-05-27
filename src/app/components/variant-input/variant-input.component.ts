@@ -8,6 +8,7 @@ import { PrimaryInputComponent } from '../primary-input/primary-input.component'
   templateUrl: './variant-input.component.html',
   styleUrl: './variant-input.component.scss'
 })
+
 export class VariantInputComponent extends PrimaryInputComponent{
   @Output("submit") onSubmit = new EventEmitter<string>();
   
@@ -19,7 +20,12 @@ export class VariantInputComponent extends PrimaryInputComponent{
   
   submit() {
     const userInput = this.value;
-    console.log(userInput);
-    this.onSubmit.emit(userInput);
+    if(this.inputName === 'Pesquisa'){
+      sessionStorage.setItem('filme-pesquisa', userInput);
+    } else {
+      sessionStorage.setItem('filme-sugestao', userInput);
+      this.value = '';
+    }
+    this.onSubmit.emit();
   }
 }

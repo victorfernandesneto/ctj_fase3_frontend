@@ -1,6 +1,7 @@
 <app-variant-input 
 placeholder="O que você quer assistir?"
-(submit)="fetchMoviesFilter"
+(submit)="fetchMoviesFilter()"
+inputName="Pesquisa"
 ></app-variant-input>
 
 <div *ngIf="movies.length > 0">
@@ -20,4 +21,9 @@ placeholder="O que você quer assistir?"
   <div *ngIf="movies.length === 0">
     <h2>Loading movies...</h2>
   </div>
-  
+
+  <app-variant-input 
+placeholder="Não encontrou o que queria? Sugira para o nosso catálogo!"
+(submit)="suggestMovie()"
+inputName="Sugestao"
+></app-variant-input>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { VariantInputComponent } from '../../components/variant-input/variant-input.component';
+import { ToastrService } from 'ngx-toastr';
 
 interface Movie {
   id: number;
@@ -29,7 +30,9 @@ export class MoviesComponent implements OnInit {
   user_id: string | null = sessionStorage.getItem('user_id');
   apiUrl = 'http://localhost:3000/movies'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private toastService: ToastrService
+  ) { }
 
   ngOnInit(): void {
     this.fetchMovies();
@@ -45,8 +48,7 @@ export class MoviesComponent implements OnInit {
 
   fetchWatchedStatus() {
     this.http.get<WatchedMovie[]>(this.apiUrl + '/watched?user_uuid=' + this.user_id!)
-      .subscribe(data =>
-        {
+      .subscribe(data => {
         const watchedMovieIds = new Set(data.map((movie: WatchedMovie) => movie.filme_id));
 
         this.movies.forEach((movie: Movie) => {
@@ -55,8 +57,13 @@ export class MoviesComponent implements OnInit {
       });
   }
 
-  fetchMoviesFilter(m: string) {
-    console.log(m);
+  fetchMoviesFilter() {
+    const m = sessionStorage.getItem('filme-pesquisa');
+    if (!m) {
+      sessionStorage.removeItem('filme-pesquisa');
+      this.fetchMovies();
+      return;
+    }
     this.http.get<Movie[]>(this.apiUrl + '/title?title=' + m)
       .subscribe(data => {
         this.movies = data;
@@ -68,10 +75,23 @@ export class MoviesComponent implements OnInit {
     const watched = !movie.watched;
     movie.watched = watched;
 
-    this.http.post('http://localhost:3000/movies/watched', {
+    this.http.post(this.apiUrl + '/watched', {
       user_uuid: this.user_id,
       movie_id: movie.id
     })
       .subscribe(() => console.log('Movie watched status updated'));
   }
-}
+
+  suggestMovie() {
+    const sugestao = sessionStorage.getItem('filme-sugestao');
+    this.http.post(this.apiUrl + '/suggest', {
+      titulo: sugestao,
+      usuario: this.user_id
+    }).subscribe({
+      next: () => {
+        this.toastService.success("Filme sugerido com sucesso!")
+        sessionStorage.removeItem('filme-sugestao');
+      },
+      error: () => this.toastService.error("Opa! Deu algo de errado. Tente novamente mais tarde.")
+    })
+  }}
