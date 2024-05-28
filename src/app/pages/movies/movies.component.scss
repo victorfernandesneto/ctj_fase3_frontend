@@ -1,45 +1,54 @@
 @import '../../../styles/variables.scss';
 
-body {
+app-variant-input{
+    width: 100%;
+    max-width: 30rem;
+}
+.window {
     background-color: $dark-background;
 }
 
 .container {
     display: flex;
-    gap: 10px;
+    gap: 2rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0 360px;
-    padding: 40px 20px;
+    margin: 0 10rem;
+    padding: 2.5rem 1.25rem;
     background-color: white;
 
     .barrinha {
         display: flex;
-        gap: 10px;
-        height: 50px;    
+        gap: 0.6rem;
+        height: 3rem;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
 
-        button {
+        .logout {
             background-color: $gray-color;
-            width: 100px;
-            height: 50px;
+            width: 6.25rem;
+            height: 3rem;
             background-image: url('../../../assets/logout.svg');
             background-repeat: no-repeat;
             background-position: center;
             border: none;
-            border-radius: 8px;
+            border-radius: 0.5rem;
+            cursor: pointer;
         }
     }
 
     .movies{
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 1rem;
         .movie {
-            border-radius: 8px;
-            display: flex;
-            padding: 15px 10px;
-            gap: 5px;
+            border-radius: 0.5rem;
+            display: grid;
+            grid-template-columns: 2fr 3fr 1fr;
+            padding: 1rem 0.6rem;
+            gap: 1rem;
             background-color: $dark-background;
         
             .titulo {
@@ -49,7 +58,7 @@ body {
                 justify-content: center;
             h2 {
                 font: $font-title;
-                font-size: 24px;
+                font-size: 1.5rem;
             }
             p{
                 font: $font-text;
@@ -58,16 +67,17 @@ body {
         }
         .descricao {
             font: $font-alert;
-            max-width: 300px;
-            font-size: 14px;
+            max-width: 19rem;
+            font-size: 0.75rem;
         }
         button{
             align-self: center;
             justify-self: center;
             border: none;
-            width: 48px;
-            height: 48px;
-            border-radius: 8px;
+            width: 3rem;
+            height: 3rem;
+            cursor: pointer;
+            border-radius: 0.5rem;
 
             &.not-watched{
                 background-image: url('../../../assets/x.svg');

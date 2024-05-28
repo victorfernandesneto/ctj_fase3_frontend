@@ -7,7 +7,7 @@
             [value]="value"
             (input)="onInput($event)"
         />
-        <button class="icon" (click)="submit()">
+        <button class="icon" (click)="submit()" style="background-image: url('{{ buttonBackgroundUrl }}')">
             <ng-content></ng-content>
         </button>
     </div>

@@ -1,8 +1,8 @@
-<body>
+<div class="window">
 <div class="container">
   <div class="barrinha"><app-variant-input placeholder="O que você quer assistir?" (submit)="fetchMoviesFilter()"
-    inputName="Pesquisa" class="input-pesquisa"></app-variant-input>
-  <button (click)="logout()"></button>
+    inputName="Pesquisa" class="input-pesquisa" buttonBackgroundUrl="../../../assets/lupa.svg"></app-variant-input>
+  <button (click)="logout()" class="logout"></button>
 </div>
 
 <div class="movies "*ngIf="movies.length > 0">
@@ -25,6 +25,6 @@
 </div>
 
 <app-variant-input placeholder="Não encontrou o que queria? Sugira para o nosso catálogo!" (submit)="suggestMovie()"
-  inputName="Sugestao"></app-variant-input>
+  inputName="Sugestao" buttonBackgroundUrl="../../../assets/sugestao.svg"></app-variant-input>
 </div>
-</body>
+</div>

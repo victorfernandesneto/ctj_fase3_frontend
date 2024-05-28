@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PrimaryInputComponent } from '../primary-input/primary-input.component';
 
 @Component({
@@ -10,8 +10,8 @@ import { PrimaryInputComponent } from '../primary-input/primary-input.component'
 })
 
 export class VariantInputComponent extends PrimaryInputComponent{
+  @Input() buttonBackgroundUrl: string = '';
   @Output("submit") onSubmit = new EventEmitter<string>();
-  
   
   override onInput(event: Event){
     const value = (event.target as HTMLInputElement).value
