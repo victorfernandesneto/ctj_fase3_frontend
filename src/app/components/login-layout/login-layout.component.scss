@@ -1,29 +1,28 @@
 @import "../../../styles/variables.scss";
 
 main {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
     align-items: center;
-    justify-content: center;
-    height: 100%;
-    overflow: hidden;
+    height: 100vh;
 
     section{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        height: 100%;
     }
+}
 
     .form-section {
-        padding: 0 40px;
-        width: 480px;
-        flex-grow: 0.3;
+        padding: 0 2.5rem;
+        width: 30rem;
 
         h2 {
             font: $font-title;
             color: $dark-color;
-            margin-bottom: 30px;
+            margin-bottom: 2rem;
         }
 
         button {
@@ -31,8 +30,8 @@ main {
             border: none;
             background-color: transparent;
             width: 100%;
-            border-radius: 10px;
-            padding: 12px;
+            border-radius: 0.6rem;
+            padding: 0.75rem;
             cursor: pointer;
 
             &:disabled{
@@ -43,11 +42,11 @@ main {
                 background-color: $primary-color;
                 color: white;
                 box-shadow: 0px 8px 12px rgba(183.00000429153442, 33.00000183284283, 87.00000241398811, 1);
-                margin-bottom: 30px;
+                margin-bottom: 2rem;
             }
 
             &.btn-secondary {
-                margin-top: 30px;
+                margin-top: 2rem;
                 color: $primary-color;
                 border: 1px solid $primary-color;
             }
@@ -58,7 +57,7 @@ main {
             align-items: center;
             justify-content: center;
             width: 100%;
-            gap: 10px;
+            gap: 0.6rem;
 
             span{
                 font: $font-text-light;
@@ -75,13 +74,12 @@ main {
     }
     
     .decoration-section {
-        padding: 110px 138px;
+        padding: 0 3rem;
         background-color: $dark-background;
-        flex-grow: 1;
+
 
         img {
-            width: 972px;
-            height: 780px;
+            width: 60rem;
+            height: 50rem;
         }
     }
-}
